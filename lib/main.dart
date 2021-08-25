@@ -5,55 +5,99 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final String title = "Greetings App";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: title,
-      home: MyHomePage(
-        title: title,
-      ),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  final String title;
-
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  late String name;
-
-  @override
-  void initState() {
-    name = "swarna";
-
-    super.initState();
-  }
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String x = "swarna";
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Column(children: [
-        Text("hello $name"),
-        TextButton(
-            onPressed: () {
-              name = "manik";
-              print(name);
-              setState(() {});
-            },
-            child: Text("change to manik")),
-        Container(
-          child: Text("hiiii $x"),
-        )
+        Column(
+          children: [
+            Container(
+              height: 72,
+              width: 72,
+              child: Placeholder(),
+            ),
+            Text(
+              "James Anderson",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+              ),
+            ),
+            Text("yesterday"),
+          ],
+        ),
+        SizedBox(height: 48),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 64),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(Icons.chat),
+              Icon(Icons.call),
+              Icon(Icons.video_call),
+              Icon(Icons.message),
+            ],
+          ),
+        ),
+        SizedBox(height: 48),
+        Column(
+          children: [
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Cellular"),
+                        Text("0 (89) 345 89 89"),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.chat),
+                        Icon(Icons.call),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Home"),
+                        Text("0 (63) 345 89 89"),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.chat),
+                        Icon(Icons.call),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
       ]),
     );
   }
